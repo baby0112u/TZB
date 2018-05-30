@@ -22,7 +22,8 @@ namespace TZB.EFService
             //Database.SetInitializer<SqlDbContext>(null);
             //Database.SetInitializer(new CreateDatabaseIfNotExists<SqlDbContext>());
             //Database.SetInitializer(new DropCreateDatabaseAlways<SqlDbContext>());
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SqlDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SqlDbContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SqlDbContext, TZB.EFService.Migrations.Configuration>());
         }
         public SqlDbContext():base("name=SqlConn")
         {

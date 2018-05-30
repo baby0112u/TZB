@@ -13,7 +13,7 @@ namespace quartzTest
     {
         static void Main(string[] args)
         {
-            IScheduler sched = new StdSchedulerFactory().GetScheduler();
+            IScheduler sched = (IScheduler)new StdSchedulerFactory().GetScheduler();
             JobDetailImpl jdBossReport = new JobDetailImpl("jdTest", typeof(TestJob));
             //IMutableTrigger triggerBossReport = CronScheduleBuilder.DailyAtHourAndMinute(23,45).Build();//每天 23:45 执行一次
             IMutableTrigger triggerBossReport = CronScheduleBuilder.CronSchedule("1/3 * * * * ? ").Build();

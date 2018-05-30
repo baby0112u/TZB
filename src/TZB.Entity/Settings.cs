@@ -26,11 +26,11 @@ namespace TZB.Entity
         /// </summary>
         public string Text { get; set; }
         /// <summary>
-        /// PasswordSalt VARCHAR2(100) not null, --密码盐值
+        /// Parent VARCHAR2(50) not null, --父级Key
         /// </summary>
         public string Parent { get; set; } = "0";
         /// <summary>
-        /// Type varchar2(10) not null, --员工工号 
+        /// UserId varchar2(10) not null, --员工工号 
         /// </summary>
         public string UserId { get; set; }
         /// <summary>
