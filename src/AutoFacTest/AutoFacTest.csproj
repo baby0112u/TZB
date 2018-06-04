@@ -84,6 +84,10 @@
       <Project>{16072b6a-34df-4820-933f-5e1b93018aa2}</Project>
       <Name>TZB.EntityConfig</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TZB.Entity\TZB.Entity.csproj">
+      <Project>{a10bd5ec-c5c1-4046-ba73-9bc5d4bc312c}</Project>
+      <Name>TZB.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TZB.Framework\TZB.Framework.csproj">
       <Project>{d7de24e8-07df-41e0-8f9a-edb7f2db3c9d}</Project>
       <Name>TZB.Framework</Name>

@@ -15,7 +15,7 @@ namespace AutoFacTest
         static void Main(string[] args)
         {
             #region OrclDbContext
-            /*
+            
             using (OrclDbContext ctx = new OrclDbContext())
             {
                 TZB.Entity.UserPwd pwd = new TZB.Entity.UserPwd();
@@ -27,12 +27,13 @@ namespace AutoFacTest
                 pwd.PasswordHash = MD5Helper.CalcMD5(pwd.PasswordSalt + pwd.UserId);
                 ctx.UserPwds.Add(pwd);
                 ctx.SaveChanges();
-                Console.WriteLine(pwd.Id);s
+                Console.WriteLine(pwd.Id);
             }
-            */
+            
             #endregion
 
             #region AutoFac
+            /*
             var builder = new ContainerBuilder();
             builder.Register(n => new ClassC { D = n.Resolve<ClassD>(), Name = "sss" });
             builder.RegisterType<ClassD>();
@@ -41,6 +42,7 @@ namespace AutoFacTest
             //var c = new ClassC();
             c.Show();
             c.D.Show();
+            */
             #endregion
 
             Console.ReadKey();

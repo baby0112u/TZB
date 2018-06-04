@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity.ModelConfiguration;
 
 namespace TZB.EntityConfig
 {
@@ -12,9 +7,9 @@ namespace TZB.EntityConfig
         public UserPwd()
         {
             ToTable("TBL_USERPWD");
-            // UserId varchar2(10) not null, --工号 
+            // UserId varchar2(10) not null, --工号
             Property(u => u.UserId).HasMaxLength(10).IsRequired();
-            // UserName VARCHAR2(50) not null, --用户账号 
+            // UserName VARCHAR2(50) not null, --用户账号
             Property(u => u.UserName).HasMaxLength(50).IsRequired();
             // PasswordHash VARCHAR2(100) not null, --密码哈希值
             Property(u => u.PasswordHash).HasMaxLength(100).IsRequired();
