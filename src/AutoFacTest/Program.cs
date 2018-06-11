@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TZB.EFService;
 using TZB.Utils;
+using TZB.MySqlDB;
 
 namespace AutoFacTest
 {
@@ -14,8 +15,24 @@ namespace AutoFacTest
     {
         static void Main(string[] args)
         {
+
+
+            using (TZB.MySqlDB.MySqlContext ctx = new MySqlContext())
+            {
+                TZB.Entity.UserPwd pwd = new TZB.Entity.UserPwd();
+                pwd.LastLoginErrtime = DateTime.Now;
+                pwd.LoginErrTimes = 0;
+                pwd.PasswordSalt = "18286865338";
+                pwd.UserId = "011239";
+                pwd.UserName = "baby0112";
+                pwd.PasswordHash = MD5Helper.CalcMD5(pwd.PasswordSalt + pwd.UserId);
+                ctx.UserPwds.Add(pwd);
+                ctx.SaveChanges();
+                Console.WriteLine(pwd.Id);
+            }
+
             #region OrclDbContext
-            
+            /*
             using (OrclDbContext ctx = new OrclDbContext())
             {
                 TZB.Entity.UserPwd pwd = new TZB.Entity.UserPwd();
@@ -29,7 +46,7 @@ namespace AutoFacTest
                 ctx.SaveChanges();
                 Console.WriteLine(pwd.Id);
             }
-            
+            */
             #endregion
 
             #region AutoFac
