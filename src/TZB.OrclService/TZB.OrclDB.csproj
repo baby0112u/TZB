@@ -7,8 +7,8 @@
     <ProjectGuid>{6960306B-DE2E-4DF0-9A2E-A505EDF4DBF6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrclService</RootNamespace>
-    <AssemblyName>OrclService</AssemblyName>
+    <RootNamespace>TZB.OrclDB</RootNamespace>
+    <AssemblyName>TZB.OrclDB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -89,9 +89,9 @@
       <Project>{0e613ceb-374e-4e79-8706-beae649651de}</Project>
       <Name>TZB.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TZB.EFService\TZB.EFService.csproj">
+    <ProjectReference Include="..\TZB.EFService\TZB.SqlServerDB.csproj">
       <Project>{f5989fc3-7c0e-4257-88ed-c649f7a19875}</Project>
-      <Name>TZB.EFService</Name>
+      <Name>TZB.SqlServerDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\TZB.EntityConfig\TZB.EntityConfig.csproj">
       <Project>{16072b6a-34df-4820-933f-5e1b93018aa2}</Project>
@@ -113,9 +113,9 @@
       <Project>{08c00975-c521-42c9-8dba-3ba2720811a7}</Project>
       <Name>TZB.MySqlDB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TZB.OrclService\TZB.OrclService.csproj">
+    <ProjectReference Include="..\TZB.OrclService\TZB.OrclDB.csproj">
       <Project>{6960306b-de2e-4df0-9a2e-a505edf4dbf6}</Project>
-      <Name>TZB.OrclService</Name>
+      <Name>TZB.OrclDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\TZB.Utils\TZB.Utils.csproj">
       <Project>{806ee1ca-cd39-4711-84a1-815208794bb9}</Project>

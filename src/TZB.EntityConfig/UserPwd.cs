@@ -7,6 +7,9 @@ namespace TZB.EntityConfig
         public UserPwd()
         {
             ToTable("TBL_USERPWD");
+            //UserId工号 不能跟系统编号混淆了
+            HasMany(u => u.Roles).WithMany(r => r.UserPwds).Map(m => m.ToTable("Tbl_UserPwdRoles")
+                .MapLeftKey("UserPwdId").MapRightKey("RoleId"));
             // UserId varchar2(10) not null, --工号
             Property(u => u.UserId).HasMaxLength(10).IsRequired();
             // UserName VARCHAR2(50) not null, --用户账号
@@ -18,7 +21,7 @@ namespace TZB.EntityConfig
             // LoginErrTimes INTEGER default 0 not null,--登陆错误次数
             Property(u => u.LoginErrTimes).IsRequired();
             // LastLoginErrtime DATE default SYSDATE not null,--最后一次错误登陆时间
-            Property(u => u.LastLoginErrtime).IsRequired();
+            Property(u => u.LastLoginErrTime).IsRequired();
         }
     }
 }

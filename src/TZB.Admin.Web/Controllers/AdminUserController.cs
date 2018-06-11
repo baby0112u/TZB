@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TZB.Dto;
-using TZB.EFService;
+using TZB.SqlServerDB;
 using TZB.Framework;
 using TZB.Utils;
 
@@ -35,7 +35,7 @@ namespace TZB.Admin.Web.Controllers
             using (SqlDbContext ctx = new SqlDbContext())
             {
                 TZB.Entity.UserPwd pwd = new TZB.Entity.UserPwd();
-                pwd.LastLoginErrtime = DateTime.Now;
+                pwd.LastLoginErrTime = DateTime.Now;
                 pwd.LoginErrTimes = 0;
                 pwd.PasswordSalt = "1828686****";
                 pwd.UserId = "011239";

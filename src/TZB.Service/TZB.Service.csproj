@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A10BD5EC-C5C1-4046-BA73-9BC5D4BC312C}</ProjectGuid>
+    <ProjectGuid>{CAB0D37B-7438-4F9E-81C8-368F18284FA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TZB.Entity</RootNamespace>
-    <AssemblyName>TZB.Entity</AssemblyName>
+    <RootNamespace>TZB.Service</RootNamespace>
+    <AssemblyName>TZB.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,13 +47,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEntity.cs" />
-    <Compile Include="Permission.cs" />
+    <Compile Include="BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="UserInfo.cs" />
-    <Compile Include="UserPwd.cs" />
+    <Compile Include="UserInfoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TZB.Dto\TZB.Dto.csproj">
+      <Project>{0e613ceb-374e-4e79-8706-beae649651de}</Project>
+      <Name>TZB.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TZB.EFService\TZB.SqlServerDB.csproj">
+      <Project>{f5989fc3-7c0e-4257-88ed-c649f7a19875}</Project>
+      <Name>TZB.SqlServerDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TZB.Entity\TZB.Entity.csproj">
+      <Project>{A10BD5EC-C5C1-4046-BA73-9BC5D4BC312C}</Project>
+      <Name>TZB.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TZB.IService\TZB.IService.csproj">
+      <Project>{ab94d00c-d515-4196-8787-808f09756913}</Project>
+      <Name>TZB.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TZB.Utils\TZB.Utils.csproj">
+      <Project>{806EE1CA-CD39-4711-84A1-815208794BB9}</Project>
+      <Name>TZB.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

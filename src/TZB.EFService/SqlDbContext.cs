@@ -5,7 +5,7 @@ using System.Reflection;
 using TZB.Entity;
 using TZB.Utils;
 
-namespace TZB.EFService
+namespace TZB.SqlServerDB
 {
     public class SqlDbContext : DbContext
     {
@@ -18,7 +18,7 @@ namespace TZB.EFService
             //Database.SetInitializer(new CreateDatabaseIfNotExists<SqlDbContext>());
             //Database.SetInitializer(new DropCreateDatabaseAlways<SqlDbContext>());
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SqlDbContext>());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SqlDbContext, TZB.EFService.Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SqlDbContext, TZB.SqlServerDB.Migrations.Configuration>());
         }
 
         public SqlDbContext() : base("name=SqlConn")

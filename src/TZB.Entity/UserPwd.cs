@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TZB.Entity
 {
@@ -32,6 +33,10 @@ namespace TZB.Entity
         /// <summary>
         /// LastLoginErrtime DATE default SYSDATE not null,--最后一次错误登陆时间
         /// </summary>
-        public DateTime LastLoginErrtime { get; set; } = DateTime.Now;
+        public DateTime LastLoginErrTime { get; set; } = DateTime.Now;
+        /// <summary>
+        /// 用户拥有的角色
+        /// </summary>
+        public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
     }
 }

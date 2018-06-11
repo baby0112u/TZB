@@ -19,7 +19,7 @@ namespace quartzTest
             using (TZB.MySqlDB.MySqlContext ctx = new MySqlContext())
             {
                 TZB.Entity.UserPwd pwd = new TZB.Entity.UserPwd();
-                pwd.LastLoginErrtime = DateTime.Now;
+                pwd.LastLoginErrTime = DateTime.Now;
                 pwd.LoginErrTimes = 0;
                 pwd.PasswordSalt = "18286865338";
                 pwd.UserId = "011239";

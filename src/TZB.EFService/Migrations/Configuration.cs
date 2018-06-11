@@ -1,18 +1,18 @@
-namespace TZB.EFService.Migrations
+namespace TZB.SqlServerDB.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TZB.EFService.SqlDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TZB.SqlServerDB.SqlDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TZB.EFService.SqlDbContext context)
+        protected override void Seed(TZB.SqlServerDB.SqlDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
