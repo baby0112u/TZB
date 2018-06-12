@@ -11,6 +11,7 @@ namespace TZB.SqlServerDB
     {
         public DbSet<UserPwd> UserPwds { get; set; }
         public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
 
         static SqlDbContext()
         {

@@ -26,7 +26,7 @@ namespace TZB.Admin.Web
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();//把当前程序集中的 Controller 都注册
 
-            Assembly[] assemblies = new Assembly[] { Assembly.Load("TZB.EFService") };
+            Assembly[] assemblies = new Assembly[] { Assembly.Load("TZB.Service") };
             builder.RegisterAssemblyTypes(assemblies)
             .Where(type => !type.IsAbstract && typeof(IServiceSupport).IsAssignableFrom(type))
             .AsImplementedInterfaces().PropertiesAutowired();

@@ -1,0 +1,39 @@
+﻿@model TZB.Dto.Permission[]
+    @{
+        ViewBag.Title = "List";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="layui-form news_list">
+        <table class="layui-table">
+            <colgroup>
+                <col width="50">
+                <col width="40%">
+                <col width="30%">
+                <col width="20%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+                    <th>名称</th>
+                    <th>描述</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var perm in Model)
+                {
+                    <tr class="text-c">
+                        <td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>
+                        <td>@perm.Name</td>
+                        <td>@perm.Description</td>
+                        <td class="td-manage">
+                            <a title="编辑" href="javascript:;" onclick="permissionEdit('权限项编辑', '/Permission/Edit/@perm.Id',  '800', '500')" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 编辑</a>
+                            <a title="删除" href="javascript:;" onclick="permissionDel(this,@perm.Id)" class="layui-btn layui-btn-mini news_edit" style="text-decoration:none"><i class="layui-icon">&#xe640;</i> 删除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
