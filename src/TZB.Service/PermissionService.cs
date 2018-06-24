@@ -13,12 +13,45 @@ namespace TZB.Service
     {
         public void AddPermIds(long roleId, long[] permIds)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Role> roleBS
+                    = new BaseService<Entity.Role>(ctx);
+                var role = roleBS.GetById(roleId);
+                if (role == null)
+                {
+                    throw new ArgumentException("roleId不存在" + roleId);
+                }
+                BaseService<Entity.Permission> permBS
+                    = new BaseService<Entity.Permission>(ctx);
+                var perms = permBS.GetAll()
+                    .Where(p => permIds.Contains(p.Id)).ToArray();
+                foreach (var perm in perms)
+                {
+                    role.Permissions.Add(perm);
+                }
+                ctx.SaveChanges();
+            }
         }
 
         public long AddPermission(string permName, string description)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Permission> bs = new BaseService<Entity.Permission>(ctx);
+                // 不加id 更新描述就更不了了
+                var existName = ctx.Permissions.Any(p => p.Name == permName);
+                if (existName)
+                {
+                    throw new ArgumentException(permName + "权限已存在");
+                }
+                var per = new Entity.Permission();
+                per.Name = permName;
+                per.Description = description;
+                ctx.Permissions.Add(per);
+                ctx.SaveChanges();
+                return per.Id;
+            }
         }
 
         public Dto.Permission[] GetAll()
@@ -43,32 +76,86 @@ namespace TZB.Service
 
         public Dto.Permission GetById(long id)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Permission> bs = new BaseService<Entity.Permission>(ctx);
+                Entity.Permission per = bs.GetById(id);
+                return per == null ? null : ToDTO(per);
+            }
         }
 
         public Dto.Permission GetByName(string name)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Permission> bs = new BaseService<Entity.Permission>(ctx);
+                var pe = bs.GetAll().SingleOrDefault(p => p.Name == name);
+                return pe == null ? null : ToDTO(pe);
+            }
         }
 
         public Dto.Permission[] GetByRoleId(long roleId)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Role> bs = new BaseService<Entity.Role>(ctx);
+                return bs.GetById(roleId).Permissions.ToList().Select(p => ToDTO(p)).ToArray();
+            }
         }
 
-        public void MarkDeleted(long id)
+        public int MarkDeleted(long id)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Permission> bs = new BaseService<Entity.Permission>(ctx);
+                return bs.MarkDeleted(id);
+            }
         }
 
         public void UpdatePermIds(long roleId, long[] permIds)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Role> roleBS
+                    = new BaseService<Entity.Role>(ctx);
+                var role = roleBS.GetById(roleId);
+                if (role == null)
+                {
+                    throw new ArgumentException("roleId不存在" + roleId);
+                }
+                role.Permissions.Clear();
+                BaseService<Entity.Permission> permBS
+                    = new BaseService<Entity.Permission>(ctx);
+                var perms = permBS.GetAll()
+                    .Where(p => permIds.Contains(p.Id)).ToList();
+                foreach (var perm in perms)
+                {
+                    role.Permissions.Add(perm);
+                }
+                ctx.SaveChanges();
+            }
         }
 
-        public void UpdatePermission(long id, string permName, string description)
+        public int UpdatePermission(long id, string permName, string description)
         {
-            throw new NotImplementedException();
+            using (SqlServerDB.SqlDbContext ctx = new SqlServerDB.SqlDbContext())
+            {
+                BaseService<Entity.Permission> bs = new BaseService<Entity.Permission>(ctx);
+                var per = bs.GetById(id);
+                if(per == null)
+                {
+                    throw new ArgumentException("id不存在" + id);
+                }
+                // 不加id 更新描述就更不了了
+                var existName = ctx.Permissions.Any(p => p.Name == permName&&p.Id !=id);
+                if(existName)
+                {
+                    throw new ArgumentException(permName + "权限已存在");
+                }
+                per.Name = permName;
+                per.Description = description;
+                return  ctx.SaveChanges();
+            }
         }
     }
 }

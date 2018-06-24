@@ -56,11 +56,15 @@ namespace TZB.Service
             return GetAll().Where(e => e.Id == id).SingleOrDefault();
         }
 
-        public void MarkDeleted(long id)
+        public int MarkDeleted(long id)
         {
             var data = GetById(id);
+            if (data == null)
+            {
+                return 0;
+            }
             data.IsDeleted = 1;
-            ctx.SaveChanges();
+            return ctx.SaveChanges();
         }
     }
 }

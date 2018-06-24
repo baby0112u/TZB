@@ -1,0 +1,38 @@
+﻿@using TZB.Dto
+@{
+    ViewBag.Title = "编辑权限";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-admin-edit">
+        <div class="row cl">
+            <label class="form-label col-3"><span class="c-red">*</span>权限名称：</label>
+            <div class="formControls col-5">
+                <input type="text" class="input-text" value="@Model.Name" placeholder="" id="user-name" name="name" datatype="*2-16" nullmsg="权限名称不能为空">
+            </div>
+            <div class="col-4"> 
+                <input type="hidden" value="@Model.Id" name="Id"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-3">权限描述：</label>
+            <div class="formControls col-5">
+                <textarea name="desc" cols="" rows="" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="textarealength(this,100)">@Model.Description</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+            <div class="col-4"> </div>
+        </div>
+        <div class="row cl">
+            <div class="col-9 col-offset-3">
+                <input class="btn btn-primary radius" id="submit" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section FooterScript
+{
+    <script src="~/js/Permission/edit.js"></script>
+}
+

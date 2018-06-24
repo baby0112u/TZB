@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "新增权限";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-admin-add">
+        <div class="row cl">
+            <label class="form-label col-3"><span class="c-red">*</span>权限名称：</label>
+            <div class="formControls col-5">
+                <input type="text" class="input-text" value="" placeholder="" id="" name="name" datatype="*2-16" nullmsg="权限名称不能为空">
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-3">权限描述：</label>
+            <div class="formControls col-5">
+                <textarea name="desc" cols="" rows="" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="textarealength(this,100)"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+            <div class="col-4"> </div>
+        </div>
+        <div class="row cl">
+            <div class="col-9 col-offset-3">
+                <input class="btn btn-primary radius" id="submit" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section FooterScript
+{
+    <script>
+        $(function () {
+            $("#submit").on("click", function () {
+                var _this = this;
+                $(_this).attr({ disabled: true });
+                var formData = $("#form-admin-add").serializeArray();
+                $.ajax({
+                    url: "/Permission/Add",
+                    type: "post",
+                    data: formData,
+                    //data: { formData: formData, age: 3 },
+                    /*
+                    data:{name: name,
+                        description: description
+                    },*/
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.Status == 0) {
+                            alert(res.Msg);
+                            parent.location.reload();//刷新父窗口
+                        }
+                        else {
+                            alert(res.Msg);
+                            $(_this).attr({ disabled: false });
+                        }
+                    },
+                    error: function () { alert("请求出错"); $(_this).attr({ disabled: true }); }
+                });
+            });
+        });
+    </script>
+}

@@ -9,9 +9,8 @@ namespace TZB.IService
     public interface IPermissionService : IServiceSupport
     {
         long AddPermission(string permName, string description);
-        void UpdatePermission(long id, string permName,
-            string description);
-        void MarkDeleted(long id);
+        int UpdatePermission(long id, string permName, string description);
+        int MarkDeleted(long id);
 
         Dto.Permission GetById(long id);
         Dto.Permission[] GetAll();
