@@ -6,7 +6,7 @@ namespace TZB.EntityConfig
     {
         public UserPwd()
         {
-            ToTable("TBL_USERPWD");
+            ToTable("Tbl_UserPwd");
             //UserId工号 不能跟系统编号混淆了
             HasMany(u => u.Roles).WithMany(r => r.UserPwds).Map(m => m.ToTable("Tbl_UserPwdRoles")
                 .MapLeftKey("UserPwdId").MapRightKey("RoleId"));

@@ -25,6 +25,7 @@ namespace TZB.SqlServerDB
 
         public SqlDbContext() : base("name=SqlConn")
         {
+            this.Configuration.AutoDetectChangesEnabled = true;
             //Database.SetInitializer(new DropCreateDatabaseAlways<SqlDbContext>());
             this.Database.Log = sql =>
             {

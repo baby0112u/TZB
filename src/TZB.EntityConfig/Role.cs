@@ -11,7 +11,7 @@ namespace TZB.EntityConfig
     {
         public Role()
         {
-            ToTable("TBL_ROLE");
+            ToTable("Tbl_Role");
             // Description varchar2(1000) not null, --角色描述
             Property(r => r.Description).HasMaxLength(1000).IsRequired();
             // Name varchar2(100) not null, --角色名称

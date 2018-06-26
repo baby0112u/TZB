@@ -6,7 +6,7 @@ namespace TZB.EntityConfig
     {
         public Settings()
         {
-            ToTable("TBL_Settings");
+            ToTable("Tbl_Settings");
             // Type varchar2(20) not null, --类型
             Property(u => u.Type).HasMaxLength(20).IsRequired();
             // Key VARCHAR2(50) not null, --值，有字符和数字

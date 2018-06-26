@@ -6,7 +6,7 @@ namespace TZB.EntityConfig
     {
         public UserInfo()
         {
-            ToTable("TBL_USERINFO");
+            ToTable("Tbl_UserInfo");
             // UserId varchar2(10) not null, --工号
             Property(u => u.UserId).HasMaxLength(10).IsRequired();
             // UserName varchar2(100) not null, --姓名
