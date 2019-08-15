@@ -50,7 +50,7 @@ namespace TZB.Entity
         public int OrderIndex { set; get; } = 1;
 
         /// <summary>
-        /// UpdateTime DATE default SYSDATE ,--最后一次错误登陆时间
+        /// UpdateTime DATE default SYSDATE 
         /// </summary>
         public DateTime UpdateTime { get; set; }
 
